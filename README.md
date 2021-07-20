@@ -1,6 +1,22 @@
 # aws-s3
 A continuous delivery pipeline to auto-deploy a Hugo-based website to an S3 bucket.
 
+```
+git clone https://github.com/ptdriscoll/aws-s3
+```
+```
+cd aws-s3
+```
+
+2. Create and source the Python virtual environment:
+
+```
+python3 -m venv ~/.aws-s3
+```
+```
+source ~/.aws-s3/bin/activate
+```
+
 ### Video tutorials
 
 - [Build Hugo Directory in AWS Cloud9](https://www.coursera.org/lecture/cloud-computing-foundations-duke/build-hugo-directory-in-aws-cloud9-snP2y)
