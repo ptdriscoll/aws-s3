@@ -1,21 +1,5 @@
 # aws-s3
-A continuous delivery pipeline to auto-deploy a Hugo-based website to an S3 bucket.
-
-```
-git clone https://github.com/ptdriscoll/aws-s3
-```
-```
-cd aws-s3
-```
-
-2. Create and source the Python virtual environment:
-
-```
-python3 -m venv ~/.aws-s3
-```
-```
-source ~/.aws-s3/bin/activate
-```
+A continuous delivery pipeline for a Hugo-based website in an S3 bucket.
 
 ### Video tutorials
 
@@ -29,3 +13,5 @@ source ~/.aws-s3/bin/activate
 - [Continuous Delivery for Hugo Static Site from Zero](https://paiml.com/docs/home/books/cloud-computing-for-data/chapter02-cloud-foundations/#continuous-delivery-for-hugo-static-site-from-zero)
 - [GitHub: dukehugofeb1](https://github.com/noahgift/dukehugofeb1)
 - [GitHub: hugoforduke17](https://github.com/noahgift/hugoforduke17)
+- [GitHub: Hugo](https://github.com/gohugoio/hugo)
+- [Hugo](https://gohugo.io/)
