@@ -73,7 +73,7 @@ hugo new posts/my-first-post.md
 9. To run Hugo as a development server, open a TCP port:
 
     - Go to your EC2 instances, and click on the title that starts with aws-cloud9 and is in a running state 
-	- Click on the Security tab, then the Security groups link, then the Edit inbound rules button, and then the Add rule button
+    - Click on the Security tab, then Security groups link, then Edit inbound rules button, and then Add rule button
     - Set the Port range to `8080` and the Source to `0.0.0.0/0` and then click the Save rules button 
     - Navigate back to the Cloud9 console and run `curl ipinfo.io` to get the testing IP address 
     - Run `hugo serve --bind=0.0.0.0 --port=8080 --baseURL=http://<IP address>/` 
@@ -82,9 +82,10 @@ hugo new posts/my-first-post.md
 
     - Go to your S3 buckets, and create a new bucket
     - Open bucket, go to the Properties tab, click on Edit for Static website hosting, and click on Enable
-	- Specify the default Index document, and Error document, and then hit Save changes
-    - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save changes 	
-	- Then click Edit for Bucket policy, add a policy like this (but with your Bucket ARN) and hit Save changes:
+    - Specify the default Index document, and Error document, and then hit Save changes
+    - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save 	
+    - Then click Edit for Bucket policy, and add a policy like this (but with your Bucket ARN) and hit Save changes:
+ 
         ```
 		{
 		  "Version":"2012-10-17",
@@ -98,9 +99,9 @@ hugo new posts/my-first-post.md
 			}
 		  ]
 		}
-		```
+        ```
 		
-11. In the Cloud9 console, run `hugo` to generate html pages, then copy public file to just created bucket, in correct region:
+11. In the Cloud9 console, run `hugo` to generate html, then copy public file to just created bucket, in correct region:
 
 ```
 aws s3 sync public/ s3://<bucket-name> --region <for example, us-east-2> --delete
@@ -110,15 +111,15 @@ aws s3 sync public/ s3://<bucket-name> --region <for example, us-east-2> --delet
 
 13. To set up continous delivery, create a CodeBuild project:
     - Go to CodeBuild and create a new project in the same region as your S3 bucket
-	- In Source, set provider to GitHub, and select Repository in my GitHub account
-	- Also in Source, add Repository URL, and optionally add Source version 
-	- In Primary source webhook events, select Rebuild every time a code change is pushed to this repository
-	- Under Additional configuration, check Use Git submodules so that the theme can be pulled in
-	- In Environment, for the Operating system select Amazon Linux 2, for runtime(s) select Standard
-	- Also in Environment, for Image select aws/codebuild/amazonlinux1-x86_64-standard:2.0, and enable flag to build Docker images 
-	- Also in Environment, select whether Service role will be a new or existing role, and fill in Role name 
-	- Click Create build project
-	- Whatever the Service role is, make sure there is an AdministratorAccess policy attached to it under IAM Roles
+    - In Source, set provider to GitHub, and select Repository in my GitHub account
+    - Also in Source, add Repository URL, and optionally add Source version 
+    - In Primary source webhook events, select Rebuild every time a code change is pushed to this repository
+    - Under Additional configuration, check Use Git submodules so that the theme can be pulled in
+    - In Environment, for the Operating system select Amazon Linux 2, and for runtime(s) select Standard
+    - Also in Environment, for Image select aws/codebuild/amazonlinux1-x86_64-standard:2.0, and enable flag to build Docker images 
+    - Also in Environment, select whether Service role will be a new or existing role, and fill in Role name 
+    - Click Create build project
+    - Whatever the Service role is, make sure there is an AdministratorAccess policy attached to it under IAM Roles
 
 14. Create buildspec.yml file:
 
