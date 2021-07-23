@@ -11,7 +11,7 @@ phases:
       - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
       - tar -xzf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
       - mv hugo /usr/bin/hugo
-      - cd -
+      - cd ..
       - rm -rf /tmp/*
   build:
     commands:
@@ -19,5 +19,5 @@ phases:
       - hugo 
   post_build:
     commands:
-      - aws s3 sync public/ s3://hugo-website-ptd --region us-east-2 --delete
+      - aws s3 sync s3://hugo-website-ptd --region us-east-2 --delete
       - echo Build completed on `date`
