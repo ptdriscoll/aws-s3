@@ -42,7 +42,7 @@ cd <repo directory>
 
 ```
 hugo new site quickstart
-``
+```
 
 6. Move quickstart contents to root of repo directory, and then remove quickstart folder:
 
