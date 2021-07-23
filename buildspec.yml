@@ -19,5 +19,5 @@ phases:
       - hugo 
   post_build:
     commands:
-      - aws s3 sync s3://hugo-website-ptd --region us-east-2 --delete
+      - aws s3 sync public/ s3://hugo-website-ptd --region us-east-2 --delete
       - echo Build completed on `date`
