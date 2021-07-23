@@ -68,15 +68,15 @@ echo 'theme = "ananke"' >> config.toml
 hugo new posts/my-first-post.md
 ```
 
+<img src="img/Hugo-Post.jpg" width="675">   
+
 9. To run Hugo as a development server, open a TCP port:
 
     - Go to your EC2 instances, and click on the title that starts with aws-cloud9 and is in a running state 
 	- Click on the Security tab, then the Security groups link, then the Edit inbound rules button, and then the Add rule button
     - Set the Port range to `8080` and the Source to `0.0.0.0/0` and then click the Save rules button 
     - Navigate back to the Cloud9 console and run `curl ipinfo.io` to get the testing IP address 
-    - Run `hugo serve --bind=0.0.0.0 --port=8080 --baseURL=http://<IP address>/`
-    
-<img src="img/Hugo-Post.jpg" width="675">    
+    - Run `hugo serve --bind=0.0.0.0 --port=8080 --baseURL=http://<IP address>/` 
 
 10. To run the website serverless, first create an S3 bucket:
 
