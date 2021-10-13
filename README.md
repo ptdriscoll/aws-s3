@@ -84,7 +84,7 @@ hugo new posts/my-first-post.md
 
     - Go to your S3 buckets, and create a new bucket
     - Open bucket, go to the Properties tab, click on Edit for Static website hosting, and click on Enable
-    - Specify "index.html" and "error.html" as the Index and Error docments, and then hit Save changes
+    - Specify index.html and error.html as the Index and Error docments, and then hit Save changes
     - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save 	
     - Then click Edit for Bucket policy, and add a policy like this (but with your Bucket ARN, shown on top of edit area, and make sure it ends with /*), and hit Save changes:
  
