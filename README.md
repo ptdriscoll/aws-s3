@@ -70,7 +70,9 @@ hugo new posts/my-first-post.md
 
 <img src="img/Hugo-Post.jpg" width="675">   
 
-9. To run Hugo as a development server, open a TCP port:
+9. In the Markdown file, toggle "draft" to false to publish post.
+
+10. To run Hugo as a development server, open a TCP port:
 
     - Go to your EC2 instances, and click on the title that starts with aws-cloud9 and is in a running state 
     - Click on the Security tab, then Security groups link, then Edit inbound rules button, and then Add rule button
@@ -78,13 +80,13 @@ hugo new posts/my-first-post.md
     - Navigate back to the Cloud9 console and run `curl ipinfo.io` to get the testing IP address 
     - Run `hugo serve --bind=0.0.0.0 --port=8080 --baseURL=http://<IP address>/` 
 
-10. To run the website serverless, first create an S3 bucket:
+11. To run the website serverless, first create an S3 bucket:
 
     - Go to your S3 buckets, and create a new bucket
     - Open bucket, go to the Properties tab, click on Edit for Static website hosting, and click on Enable
-    - Specify the default Index document, and Error document, and then hit Save changes
+    - Specify "index.html" and "error.html" as the Index and Error docments, and then hit Save changes
     - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save 	
-    - Then click Edit for Bucket policy, and add a policy like this (but with your Bucket ARN) and hit Save changes:
+    - Then click Edit for Bucket policy, and add a policy like this (but with your Bucket ARN, shown on top of edit area, and make sure it ends with /*) and hit Save changes:
  
         ```
 		{
@@ -101,37 +103,37 @@ hugo new posts/my-first-post.md
 		}
         ```
 		
-11. In the Cloud9 console, run `hugo` to generate html, then copy public file to just created bucket, in correct region:
+12. In the Cloud9 console, run `hugo` to generate html, then copy public file to just created bucket (using bucket name, not the ARN), in correct region:
 
 ```
 aws s3 sync public/ s3://<bucket-name> --region <for example, us-east-2> --delete
 ```
 
-12. View the website using the URL in the bucket's Properties > Static website hosting information.
+13. View the website using the URL in the bucket's Properties > Static website hosting information.
 
-13. To set up continous delivery, create a CodeBuild project:
+14. To set up continous delivery, create a CodeBuild project:
     - Go to CodeBuild and create a new project in the same region as your S3 bucket
     - In Source, set provider to GitHub, and select Repository in my GitHub account
     - Also in Source, add Repository URL, and optionally add Source version 
     - In Primary source webhook events, select Rebuild every time a code change is pushed to this repository
     - Under Additional configuration, check Use Git submodules so that the theme can be pulled in
     - In Environment, for the Operating system select Amazon Linux 2, and for runtime(s) select Standard
-    - Also in Environment, for Image select aws/codebuild/amazonlinux1-x86_64-standard:2.0, and enable flag to build Docker images 
+    - Also in Environment, for Image select aws/codebuild/amazonlinux2-x86_64-standard:2.0, and enable flag to build Docker images 
     - Also in Environment, select whether Service role will be a new or existing role, and fill in Role name 
     - Click Create build project
     - Whatever the Service role is, make sure there is an AdministratorAccess policy attached to it under IAM Roles
 
-14. Create buildspec.yml file:
+15. Create buildspec.yml file:
 
 ```
 touch buildspec.yml 
 ```
 
-15. Add text to buildspec.yml like that in this repository, but edit:
+16. Add text to buildspec.yml like [that in this repository](https://github.com/ptdriscoll/aws-s3/blob/main/buildspec.yml), but edit:
     - Under environment_variables, HUGO_VERSION - to match Hugo version you're using 
-	- Under post_build, aws s3 sync - to match bucket and region	
+    - Under post_build, aws s3 sync - to match bucket and region	
 
-16. Add, commit and push files in repo to GitHub:
+17. Add, commit and push files in repo to GitHub:
 
 ```
 git add *
