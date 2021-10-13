@@ -87,21 +87,20 @@ hugo new posts/my-first-post.md
     - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save
     - Then click Edit for Bucket policy, and add a policy like this (but with your Bucket ARN, shown on top of edit area, and make sure it ends with /*), and hit Save changes:
 
-
-        ```
+```
+	{
+	  "Version":"2012-10-17",
+	  "Statement":[
 		{
-		  "Version":"2012-10-17",
-		  "Statement":[
-			{
-			  "Sid":"PublicRead",
-			  "Effect":"Allow",
-			  "Principal": "*",
-			  "Action":["s3:GetObject","s3:GetObjectVersion"],
-			  "Resource":["arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"]
-			}
-		  ]
+		  "Sid":"PublicRead",
+		  "Effect":"Allow",
+		  "Principal": "*",
+		  "Action":["s3:GetObject","s3:GetObjectVersion"],
+		  "Resource":["arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"]
 		}
-        ```
+	  ]
+	}
+```
 		
 12. In the Cloud9 console, run `hugo` to generate html, then copy public file to just created bucket (using bucket name, not the ARN), in correct region:
 
