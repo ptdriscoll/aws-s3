@@ -82,9 +82,10 @@ hugo new posts/my-first-post.md
 
 11. To run the website serverless, first create an S3 bucket:
 
-    - Go to your S3 buckets, and create a new bucket
-    - Go to your EC2 instances, and click on the title that starts with aws-cloud9 and is in a running state 
     - Click on the Security tab, then Security groups link, then Edit inbound rules button, and then Add rule button
+    - Set the Port range to `8080` and the Source to `0.0.0.0/0` and then click the Save rules button 
+
+    - Go to your S3 buckets, and create a new bucket
     - Open bucket, go to the Properties tab, click on Edit for Static website hosting, and click on Enable
     - Specify "index.html" and "error.html" as the Index and Error docments, and then hit Save changes
     - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save
