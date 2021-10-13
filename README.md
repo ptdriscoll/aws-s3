@@ -87,6 +87,7 @@ hugo new posts/my-first-post.md
     - Go to the Permissions tab, click Edit for Block public access, uncheck Block all public access, and hit Save
     - Then click Edit for Bucket policy, and add a policy like this (but with your Bucket ARN, shown on top of edit area, and make sure it ends with /*), and hit Save changes:
 
+
         ```
 		{
 		  "Version":"2012-10-17",
