@@ -114,8 +114,8 @@ aws s3 sync public/ s3://<bucket-name> --region <for example, us-east-2> --delet
     - Go to CodeBuild and create a new project in the same region as your S3 bucket
     - In Source, set provider to GitHub, and select Repository in my GitHub account
     - Also in Source, add Repository URL, and optionally add Source version 
-    - In Primary source webhook events, select Rebuild every time a code change is pushed to this repository
     - Under Additional configuration, check Use Git submodules so that the theme can be pulled in
+    - In Primary source webhook events, select Rebuild every time a code change is pushed to this repository
     - In Environment, for the Operating system select Amazon Linux 2, and for runtime(s) select Standard
     - Also in Environment, for Image select aws/codebuild/amazonlinux2-x86_64-standard:2.0, and enable flag to build Docker images 
     - Also in Environment, select whether Service role will be a new or existing role, and fill in Role name 
