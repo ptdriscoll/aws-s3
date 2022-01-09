@@ -70,7 +70,7 @@ hugo new posts/my-first-post.md
 
 <img src="img/Hugo-Post.jpg" width="675">   
 
-9. In the Markdown file, toggle "draft" to false to publish post.
+9. In the Markdown file, under content/posts, toggle "draft" to false to publish post.
 
 10. To run Hugo as a development server, open a TCP port:
 
