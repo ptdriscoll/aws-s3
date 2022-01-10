@@ -3,7 +3,7 @@ A continuous delivery pipeline for a Hugo-based website in an S3 bucket.
 
 <img src="img/Hugo-Home-Page.jpg" width="675">
 
-The steps to create:  
+Steps to create:  
 
 1. In a Cloud9 environment, download and uncompress the latest Hogo "extended" release:
 
